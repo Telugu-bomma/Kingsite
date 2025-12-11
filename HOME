@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Public Evidence Portal</title>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    nav a { margin-right: 15px; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+
+<body>
+  <h1>Public Service Portal</h1>
+  <p>Your happiness is my happiness.</p>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="upload.html">Submit Request</a>
+    <a href="videos.html">Video Archive</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h2>About This Portal</h2>
+  <p>we are against to loot public money.</p>
+
+  <h2>How it Works</h2>
+  <ol>
+    <li>collect the video safely using our guidelines.</li>
+    <li>Upload video to our secure pipeline.</li>
+    <li>Submit the link anonymously on the Submit Evidence page.</li>
+  </ol>
+</body>
+</html>
