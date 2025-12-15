@@ -2,169 +2,119 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma - Public Evidence Portal</title>
+<title>Telugubomma – Videos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* PAGE FADE-IN EFFECT */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: #fff;
-    animation: fadeIn 0.6s ease-in-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  margin: 0;
+  background: #0b0b0b;
+  color: #fff;
+  font-family: Arial, sans-serif;
 }
 
-/* HEADER GLASS EFFECT */
+/* HEADER */
 .header {
-    text-align: center;
-    padding: 25px;
-    border-bottom: 2px solid #1f1f1f;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #222;
 }
-.header-title {
-    color: #00ff00;
-    font-size: 32px;
-    font-weight: bold;
-    text-shadow: 0 0 10px #007700;
+.header h1 {
+  color: #00ff00;
+  margin: 0;
 }
-.header-sub {
-    color: #ccc;
-    font-size: 18px;
-}
-.header-tag {
-    color: #bbb;
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-/* TOP MENU */
-.menu {
-    text-align: center;
-    margin-bottom: 10px;
-}
-.menu a {
-    color: #00ff00;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 16px;
-}
-
-/* SEARCH BAR */
-.search-container {
-    text-align: center;
-    margin: 15px;
-}
-#searchBox {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
+.header p {
+  color: #aaa;
+  font-size: 14px;
 }
 
 /* GRID */
 .grid {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  padding: 20px;
 }
 
 .card {
-    background: rgba(17, 17, 17, 0.7);
-    border: 1px solid #222;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    backdrop-filter: blur(6px);
-    transition: 0.25s;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.25s;
 }
 .card:hover {
-    transform: scale(1.06);
-    border-color: #00ff00;
+  transform: scale(1.05);
+  border-color: #00ff00;
 }
+
 .thumb {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
 }
-.card-title {
-    padding: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #00ff00;
+
+.title {
+  padding: 8px;
+  text-align: center;
+  color: #00ff00;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 /* FOOTER */
 .footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #222;
-    margin-top: 20px;
-    color: #aaa;
-    font-size: 14px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  color: #777;
+  border-top: 1px solid #222;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
-    <div class="header-title">TELUGUBOMMA</div>
-    <div class="header-sub">Public Service Portal</div>
-    <div class="header-tag">Your happiness is my happiness 😊</div>
+  <h1>Telugubomma</h1>
+  <p>Watch • Stay Safe • Stay Happy</p>
 </div>
 
-<!-- MENU -->
-<div class="menu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+<div class="grid">
+
+  <!-- VIDEO 1 -->
+  <div class="card" onclick="openVideo('video1.html')">
+    <img src="assets/123.jpg" class="thumb">
+    <div class="title">Video 1</div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="card" onclick="openVideo('video2.html')">
+    <img src="assets/123.jpg" class="thumb">
+    <div class="title">Video 2</div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="card" onclick="openVideo('video3.html')">
+    <img src="assets/123.jpg" class="thumb">
+    <div class="title">Video 3</div>
+  </div>
+
 </div>
 
-<!-- SEARCH -->
-<div class="search-container">
-    <input type="text" id="searchBox" placeholder="Search videos...">
-</div>
-
-<!-- VIDEO GRID -->
-<div class="grid" id="videoGrid">
-<script>
-    for (let i = 1; i <= 20; i++) {
-        document.write(`
-            <a href="video${i}.html" class="video-card" data-title="Video ${i}">
-                <div class="card">
-                    <img src="assets/123.jpg" class="thumb">
-                    <div class="card-title">Video ${i}</div>
-                </div>
-            </a>
-        `);
-    }
-</script>
-</div>
-
-<!-- FOOTER -->
 <div class="footer">
-    © 2025 Telugubomma Public Evidence Portal • Anonymous • Safe • Secure
+  © 2025 Telugubomma • Anonymous • Secure
 </div>
 
-<!-- SEARCH JS -->
 <script>
-document.getElementById('searchBox').addEventListener('keyup', function() {
-    let filter = this.value.toLowerCase();
-    let videos = document.querySelectorAll('.video-card');
+function openVideo(page) {
+  // NEW TAB (external site)
+  window.open("https://www.youtube.com", "_blank");
 
-    videos.forEach(v => {
-        let title = v.dataset.title.toLowerCase();
-        v.style.display = title.includes(filter) ? "block" : "none";
-    });
-});
+  // SAME TAB (video page)
+  window.location.href = page;
+}
 </script>
 
 </body>
