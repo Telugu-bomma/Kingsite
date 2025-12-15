@@ -2,60 +2,74 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Video 3</title>
+<title>Video 1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body {
-    background: #0d0d0d;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    text-align: center;
-}
-header {
-    padding: 20px;
-    border-bottom: 1px solid #333;
-}
-h2 {
-    margin: 0;
-    color: #4da6ff;
-}
-p { color: #bbb; }
+    body {
+        background-color: #0d0d0d;
+        color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
 
-video {
-    width: 90%;
-    max-width: 700px;
-    margin-top: 20px;
-    border-radius: 10px;
-}
+    header {
+        padding: 20px;
+        border-bottom: 1px solid #333;
+    }
 
-.btn {
-    display: inline-block;
-    padding: 8px 12px;
-    background: #4da6ff;
-    color: #000;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 25px;
-    font-weight: bold;
-}
+    h2 {
+        margin: 0;
+        color: #4da6ff;
+        font-size: 24px;
+    }
+
+    p {
+        color: #bbbbbb;
+        margin-top: 10px;
+    }
+
+    video {
+        width: 90%;
+        max-width: 700px;
+        margin-top: 20px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 10px 15px;
+        background: #4da6ff;
+        color: black;
+        border-radius: 5px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background: #66b3ff;
+    }
 </style>
 </head>
 
 <body>
 
 <header>
-    <h2>Video 3 - AA Title</h2>
-    <p>Description: BB description goes here.</p>
+    <h2>Skip down</h2>
 </header>
 
-<video controls>
-  <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev?f=Trikaali.mp4" type="video/mp4">
+<!-- VIDEO PLAYER -->
+<video controls autoplay width="100%">
+  <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/3.mp4" type="video/mp4">
 </video>
 
+<!-- BACK BUTTON -->
 <br>
-<a class="btn" href="index.html">⬅ Back to Home</a>
+<a class="btn" href="home.html">⬅ Back to Home</a>
 
 </body>
 </html>
