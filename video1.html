@@ -103,7 +103,11 @@ document.getElementById("watchBtn").onclick = function () {
   const video = document.getElementById("player");
   video.style.display = "block";
   video.play();
-};
+}
+ <script>
+document.addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+});
 </script>
 
 </body>
