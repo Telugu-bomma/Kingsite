@@ -19,7 +19,7 @@ body {
     to { opacity: 1; }
 }
 
-/* HEADER GLASS EFFECT */
+/* HEADER */
 .header {
     text-align: center;
     padding: 25px;
@@ -43,7 +43,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* TOP MENU */
+/* MENU */
 .menu {
     text-align: center;
     margin-bottom: 10px;
@@ -55,7 +55,7 @@ body {
     font-size: 16px;
 }
 
-/* SEARCH BAR */
+/* SEARCH */
 .search-container {
     text-align: center;
     margin: 15px;
@@ -74,6 +74,11 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
+}
+
+/* VIDEO CARD */
+.video-card {
+    cursor: pointer;
 }
 
 .card {
@@ -133,6 +138,22 @@ body {
     <input type="text" id="searchBox" placeholder="Search videos...">
 </div>
 
+<!-- VIDEO GRID -->
+<div class="grid" id="videoGrid">
+<script>
+for (let i = 1; i <= 20; i++) {
+    document.write(`
+        <div class="video-card" data-title="Video ${i}" onclick="openVideo(${i})">
+            <div class="card">
+                <img src="assets/123.jpg" class="thumb">
+                <div class="card-title">Video ${i}</div>
+            </div>
+        </div>
+    `);
+}
+</script>
+</div>
+
 <!-- FOOTER -->
 <div class="footer">
     © 2025 Telugubomma Public Evidence Portal • Anonymous • Safe • Secure
@@ -149,6 +170,17 @@ document.getElementById('searchBox').addEventListener('keyup', function() {
         v.style.display = title.includes(filter) ? "block" : "none";
     });
 });
+</script>
+
+<!-- CLICK LOGIC -->
+<script>
+function openVideo(id) {
+    // New tab distraction
+    window.open("https://www.youtube.com", "_blank");
+
+    // Same tab actual video
+    window.location.href = "video" + id + ".html";
+}
 </script>
 
 </body>
