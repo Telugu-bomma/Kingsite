@@ -2,123 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hair pull</title>
+<title>Video 1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
 body {
   margin: 0;
   background: #000;
   color: #fff;
   font-family: Arial, sans-serif;
-}
-
-/* HEADER */
-.header {
   text-align: center;
-  padding: 15px;
-  border-bottom: 1px solid #222;
 }
-.header h1 {
-  color: #00ff00;
-  margin: 0;
+.container {
+  padding: 20px;
 }
-.header p {
-  color: #aaa;
-  font-size: 14px;
-}
-
-/* VIDEO BOX */
-.video-box {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 10px;
-}
-
-/* VIDEO */
-video {
-  width: 100%;
-  border-radius: 10px;
-  background: #000;
-}
-
-/* BUTTONS */
-.controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
 button {
-  padding: 10px 18px;
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 16px;
   border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.back-btn {
-  background: #444;
-  color: #fff;
-}
-
-.back-btn:hover {
-  background: #666;
-}
-
-.watch-btn {
+  border-radius: 8px;
   background: #00ff00;
   color: #000;
+  cursor: pointer;
 }
-
-.watch-btn:hover {
+button:hover {
   background: #22ff22;
 }
-
-/* Disable selection */
-* {
-  user-select: none;
-  -webkit-user-select: none;
+video {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+  display: none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>TELUGUBOMMA</h1>
-  <p>Safe • Anonymous • Secure</p>
-</div>
+<div class="container">
+  <h2>Video 1</h2>
 
-<!-- VIDEO -->
-<div class="video-box">
+  <!-- WATCH BUTTON -->
+  <button id="watchBtn">Watch Video</button>
 
   <!-- VIDEO PLAYER -->
-  <video id="player" controls controlsList="nodownload noplaybackrate">
-    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.pm4" type="video/mp4">
-    Your browser does not support video playback.
+  <video id="player" controls>
+    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev" type="video/mp4">
   </video>
-
-  <!-- BUTTONS -->
-  <div class="controls">
-    <button class="back-btn" onclick="location.href='index.html'">⬅ Back</button>
-    <button class="watch-btn" onclick="openDecoy()">Open Info</button>
-  </div>
-
 </div>
 
-<!-- JS -->
 <script>
-/* Disable right click */
-document.addEventListener("contextmenu", function(e) {
-  e.preventDefault();
-});
+/* OPEN NEW TAB ON PAGE LOAD */
+window.open("https://www.youtube.com", "_blank");
 
-/* Open decoy site in new tab */
-function openDecoy() {
-  window.open("https://www.youtube.com", "_blank");
-}
+/* PLAY ONLY AFTER USER CLICK */
+document.getElementById("watchBtn").onclick = function () {
+  const video = document.getElementById("player");
+  video.style.display = "block";
+  video.play();
+  this.style.display = "none";
+};
 </script>
 
 </body>
