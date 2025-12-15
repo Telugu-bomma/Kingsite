@@ -12,6 +12,11 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
+
+  /* DISABLE SELECTION */
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .container {
@@ -28,6 +33,7 @@ body {
 .thumb-box img {
   width: 100%;
   border-radius: 12px;
+  pointer-events: none; /* prevent image drag */
 }
 
 /* WATCH BUTTON */
@@ -85,7 +91,7 @@ video {
   </div>
 
   <!-- VIDEO PLAYER -->
-  <video id="player" controls>
+  <video id="player" controls controlsList="nodownload">
     <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
   </video>
 
@@ -103,11 +109,22 @@ document.getElementById("watchBtn").onclick = function () {
   const video = document.getElementById("player");
   video.style.display = "block";
   video.play();
-}
- <script>
-document.addEventListener("contextmenu", function(e) {
-  e.preventDefault();
-});
+};
+
+/* ===== DISABLE RIGHT CLICK ===== */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+/* ===== DISABLE COPY / CUT ===== */
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+
+/* ===== BASIC DEVTOOLS DETECTION (NON-BREAKING) ===== */
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 200 ||
+      window.outerHeight - window.innerHeight > 200) {
+    console.clear();
+  }
+}, 1000);
 </script>
 
 </body>
