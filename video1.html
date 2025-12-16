@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Video 1</title>
+<title>Hairpull</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -33,7 +33,7 @@ body {
 .thumb-box img {
   width: 100%;
   border-radius: 12px;
-  pointer-events: none;
+  pointer-events: none; /* prevent image drag */
 }
 
 /* WATCH BUTTON */
@@ -76,22 +76,6 @@ video {
 .back-btn:hover {
   background: #1a1a1a;
 }
-
-/* DOWNLOAD BUTTON — ADDED */
-.download-btn {
-  margin-top: 15px;
-  padding: 10px 26px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #111;
-  color: #00ff00;
-  cursor: pointer;
-  display: none;
-}
-.download-btn:hover {
-  background: #1a1a1a;
-}
 </style>
 </head>
 
@@ -106,16 +90,11 @@ video {
     <button class="watch-btn" id="watchBtn">▶ Watch Video</button>
   </div>
 
-  <!-- VIDEO PLAYER -->
-  <video id="player" controls controlsList="nodownload">
-    <source id="videoSource"
-      src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/2.mp4"
-      type="video/mp4">
-  </video>
 
-  <!-- DOWNLOAD BUTTON — ADDED -->
-  <br>
-  <button class="download-btn" id="downloadBtn">⬇ Download Video</button>
+  <!-- VIDEO PLAYER -->
+<video id="player" controls autoplay width="100%">
+  <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
+</video>
 
   <!-- BACK -->
   <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
@@ -128,25 +107,9 @@ window.open("https://www.youtube.com", "_blank");
 /* PLAY ONLY AFTER CLICK */
 document.getElementById("watchBtn").onclick = function () {
   document.getElementById("thumbBox").style.display = "none";
-
   const video = document.getElementById("player");
   video.style.display = "block";
   video.play();
-
-  // SHOW DOWNLOAD BUTTON — ADDED
-  document.getElementById("downloadBtn").style.display = "inline-block";
-};
-
-/* DOWNLOAD HANDLER — ADDED */
-document.getElementById("downloadBtn").onclick = function () {
-  const url = document.getElementById("videoSource").src;
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "video1.mp4";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
 };
 
 /* ===== DISABLE RIGHT CLICK ===== */
@@ -158,10 +121,8 @@ document.addEventListener("cut", e => e.preventDefault());
 
 /* ===== BASIC DEVTOOLS DETECTION (NON-BREAKING) ===== */
 setInterval(() => {
-  if (
-    window.outerWidth - window.innerWidth > 200 ||
-    window.outerHeight - window.innerHeight > 200
-  ) {
+  if (window.outerWidth - window.innerWidth > 200 ||
+      window.outerHeight - window.innerHeight > 200) {
     console.clear();
   }
 }, 1000);
