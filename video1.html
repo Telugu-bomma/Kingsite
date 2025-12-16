@@ -33,7 +33,7 @@ body {
 .thumb-box img {
   width: 100%;
   border-radius: 12px;
-  pointer-events: none; /* prevent image drag */
+  pointer-events: none;
 }
 
 /* WATCH BUTTON */
@@ -87,39 +87,39 @@ video {
   <!-- THUMBNAIL -->
   <div class="thumb-box" id="thumbBox">
     <img src="assets/123.jpg" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch Video/Download</button>
+    <button class="watch-btn" id="watchBtn">▶ Watch Video / Download</button>
   </div>
 
-
   <!-- VIDEO PLAYER -->
-<video id="player" controls width="100%">
-  <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
-</video>
+  <video id="player" controls width="100%">
+    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
+  </video>
 
   <!-- BACK -->
   <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
-/* OPEN NEW TAB IMMEDIATELY */
-window.open("https://www.youtube.com", "_blank");
-
 /* PLAY ONLY AFTER CLICK */
 document.getElementById("watchBtn").onclick = function () {
+
+  /* OPEN NEW TAB ONLY ON CLICK */
+  window.open("https://www.youtube.com", "_blank");
+
   document.getElementById("thumbBox").style.display = "none";
   const video = document.getElementById("player");
   video.style.display = "block";
   video.play();
 };
 
-/* ===== DISABLE RIGHT CLICK ===== */
+/* DISABLE RIGHT CLICK */
 document.addEventListener("contextmenu", e => e.preventDefault());
 
-/* ===== DISABLE COPY / CUT ===== */
+/* DISABLE COPY / CUT */
 document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
 
-/* ===== BASIC DEVTOOLS DETECTION (NON-BREAKING) ===== */
+/* BASIC DEVTOOLS DETECTION (NON-BREAKING) */
 setInterval(() => {
   if (window.outerWidth - window.innerWidth > 200 ||
       window.outerHeight - window.innerHeight > 200) {
