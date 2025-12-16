@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Next Page</title>
+<title>Telugubomma – Next</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -14,46 +14,106 @@ body {
   text-align: center;
 }
 
-.container {
+.header {
   padding: 20px;
+  border-bottom: 1px solid #222;
 }
 
+.header-title {
+  color: #00ff00;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 30px 20px;
+}
+
+/* IMAGE CARD */
 .card {
-  max-width: 320px;
-  margin: 30px auto;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #222;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  border-color: #00ff00;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
 }
 
 .card img {
   width: 100%;
-  display: block;
+  border-radius: 12px;
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0, 255, 0, 0.95);
+  color: #000;
+  cursor: pointer;
+}
+.download-btn:hover {
+  background: #22ff22;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  margin-top: 30px;
+  padding: 10px 26px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #00ff00;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: #1a1a1a;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Download Page</h2>
-
-  <!-- CLICK IMAGE → REDIRECT -->
-  <a href="https://download.moviespage.site/download/page/94335">
-    <div class="card">
-      <img src="assets/123.jpg" alt="Download">
-    </div>
-  </a>
-
-  <br>
-  <button onclick="history.back()">⬅ Back</button>
+<!-- HEADER -->
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
 </div>
+
+<div class="container">
+
+  <!-- IMAGE + REDIRECT -->
+  <div class="card" id="redirectCard">
+    <img src="assets/123.jpg" alt="Redirect Image">
+    <button class="download-btn">⬇ Download</button>
+  </div>
+
+  <!-- SINGLE BACK BUTTON -->
+  <button class="back-btn" id="backBtn">⬅ Back</button>
+
+</div>
+
+<script>
+/* REDIRECT ON IMAGE OR DOWNLOAD CLICK */
+document.getElementById("redirectCard").addEventListener("click", function () {
+  window.open(
+    "https://download.moviespage.site/download/page/94335",
+    "_blank"
+  );
+});
+
+/* GUARANTEED BACK TO next.html SOURCE PAGE */
+document.getElementById("backBtn").addEventListener("click", function () {
+  window.location.replace("home.html");
+});
+
+/* DISABLE RIGHT CLICK */
+document.addEventListener("contextmenu", e => e.preventDefault());
+</script>
 
 </body>
 </html>
