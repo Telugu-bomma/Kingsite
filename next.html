@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Telugubomma – More Videos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: #fff;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid #1f1f1f;
+}
+
+.header-title {
+    color: #00ff00;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.menu {
+    text-align: center;
+    margin: 10px 0;
+}
+.menu a {
+    color: #00ff00;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.grid {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.25s;
+}
+.card:hover {
+    transform: scale(1.05);
+    border-color: #00ff00;
+}
+
+.thumb {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+
+.card-title {
+    padding: 8px;
+    font-size: 14px;
+    color: #00ff00;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="header-title">More Videos</div>
+</div>
+
+<div class="menu">
+    <a href="home.html">⬅ Back</a>
+</div>
+
+<div class="grid">
+<script>
+for (let i = 1; i <= 20; i++) {
+    document.write(`
+        <a href="video${i}.html">
+            <div class="card">
+                <img src="assets/123.jpg" class="thumb">
+                <div class="card-title">Video ${i}</div>
+            </div>
+        </a>
+    `);
+}
+</script>
+</div>
+
+</body>
+</html>
