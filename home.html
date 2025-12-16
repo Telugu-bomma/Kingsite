@@ -2,67 +2,158 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Safe Place</title>
+<title>Telugubomma – Videos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body {
   margin: 0;
-  height: 100vh;
-  background: #000;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: Arial, sans-serif;
-}
-
-.box {
-  text-align: center;
-  border: 1px solid #222;
-  padding: 40px 25px;
-  max-width: 360px;
   background: #0d0d0d;
-  border-radius: 12px;
+  color: #fff;
 }
 
-h1 {
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 25px;
+  border-bottom: 2px solid #1f1f1f;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.header-title {
   color: #00ff00;
-  margin-bottom: 15px;
+  font-size: 32px;
+  font-weight: bold;
 }
 
-p {
+.header-sub {
   color: #ccc;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 18px;
 }
 
-button {
-  margin-top: 25px;
-  padding: 12px 28px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  background: #00ff00;
-  color: #000;
-  cursor: pointer;
+/* MENU */
+.menu {
+  text-align: center;
+  margin: 15px 0;
 }
-button:hover {
-  background: #22ff22;
+.menu a {
+  color: #00ff00;
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 16px;
+}
+
+/* SEARCH */
+.search-container {
+  text-align: center;
+  margin: 15px;
+}
+#searchBox {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* GRID */
+.grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.25s;
+}
+.card:hover {
+  transform: scale(1.05);
+  border-color: #00ff00;
+}
+
+.thumb {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+.card-title {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00ff00;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #222;
+  color: #aaa;
+  font-size: 14px;
 }
 </style>
 </head>
 
 <body>
-  <div class="box">
-    <h1>Telugubomma</h1>
-    <p>
-      You are at a safe place.<br>
-      A most trusted platform built for your happiness.
-    </p>
-    <button onclick="location.href='home.html'">
-      Enter
-    </button>
-  </div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
+  <div class="header-sub">Public Service Portal</div>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+  <a href="home.html">Home</a>
+  <a href="next.html">Next</a>
+  <a href="about.html">About</a>
+</div>
+
+<!-- SEARCH -->
+<div class="search-container">
+  <input type="text" id="searchBox" placeholder="Search videos...">
+</div>
+
+<!-- VIDEO GRID -->
+<div class="grid" id="videoGrid">
+<script>
+  for (let i = 1; i <= 20; i++) {
+    document.write(`
+      <a href="video${i}.html" class="video-card" data-title="Video ${i}">
+        <div class="card">
+          <img src="assets/123.jpg" class="thumb">
+          <div class="card-title">Video ${i}</div>
+        </div>
+      </a>
+    `);
+  }
+</script>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2025 Telugubomma • Safe • Secure
+</div>
+
+<!-- SEARCH JS -->
+<script>
+document.getElementById('searchBox').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase();
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.style.display = card.dataset.title.toLowerCase().includes(filter)
+      ? "block"
+      : "none";
+  });
+});
+</script>
+
 </body>
 </html>
