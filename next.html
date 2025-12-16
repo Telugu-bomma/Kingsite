@@ -1,72 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Music</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body {
-  margin: 0;
-  background: #0d0d0d;
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
-.header {
-  text-align: center;
-  padding: 20px;
-  color: #00ff00;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  padding: 20px;
-}
-.card {
-  background: #111;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-}
-.card:hover {
-  border: 1px solid #00ff00;
-}
-.back {
-  text-align: center;
-  margin: 20px;
-}
-.back button {
-  padding: 10px 20px;
-  background: #111;
-  color: #00ff00;
-  border: 1px solid #333;
-  cursor: pointer;
-}
-</style>
+<title>Video Player</title>
 </head>
 
-<body>
+<body style="background:#000;color:#fff;text-align:center">
 
-<div class="header">
-  <h2>🎵 Free Music (Pixabay)</h2>
-</div>
+<h3>Now Playing</h3>
 
-<div class="grid">
-  <div class="card" onclick="openAudio(1)">Music 1</div>
-  <div class="card" onclick="openAudio(2)">Music 2</div>
-  <div class="card" onclick="openAudio(3)">Music 3</div>
-</div>
+<video controls autoplay width="80%">
+  <source id="src" type="video/mp4">
+</video>
 
-<div class="back">
-  <button onclick="history.back()">⬅ Back</button>
-</div>
+<br><br>
+<button onclick="history.back()">⬅ Back</button>
 
 <script>
-function openAudio(id) {
-  window.location.href = "nextvideo.html?id=" + id;
-}
+const id = new URLSearchParams(location.search).get("id");
+document.getElementById("src").src =
+  "https://royal-snow-971b.mailforwebsite7.workers.dev/" + id;
 </script>
 
 </body>
