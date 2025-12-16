@@ -1,26 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Video Player</title>
+<title>Next Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  max-width: 320px;
+  margin: 30px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #222;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  border-color: #00ff00;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+</style>
 </head>
 
-<body style="background:#000;color:#fff;text-align:center">
+<body>
 
-<h3>Now Playing</h3>
+<div class="container">
+  <h2>Download Page</h2>
 
-<video controls autoplay width="80%">
-  <source id="src" type="video/mp4">
-</video>
+  <!-- CLICK IMAGE → REDIRECT -->
+  <a href="https://download.moviespage.site/download/page/94335">
+    <div class="card">
+      <img src="assets/123.jpg" alt="Download">
+    </div>
+  </a>
 
-<br><br>
-<button onclick="history.back()">⬅ Back</button>
-
-<script>
-const id = new URLSearchParams(location.search).get("id");
-document.getElementById("src").src =
-  "https://royal-snow-971b.mailforwebsite7.workers.dev/" + id;
-</script>
+  <br>
+  <button onclick="history.back()">⬅ Back</button>
+</div>
 
 </body>
 </html>
