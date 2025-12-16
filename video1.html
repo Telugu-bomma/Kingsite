@@ -91,22 +91,44 @@ button {
   <p>Safe • Anonymous • Secure</p>
 </div>
 
-<!-- VIDEO -->
-<div class="video-box">
+<script>
+/* PLAY ONLY AFTER CLICK */
+document.getElementById("watchBtn").onclick = function () {
 
-  <!-- VIDEO PLAYER -->
-  <video id="player" controls controlsList="nodownload noplaybackrate">
-    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev" type="video/mp4">
-    Your browser does not support video playback.
-  </video>
+  /* OPEN NEW TAB ONLY ON USER ACTION (IMPORTANT) */
+  window.open("https://www.youtube.com", "_blank");
 
-  <!-- BUTTONS -->
-  <div class="controls">
-    <button class="back-btn" onclick="location.href='index.html'">⬅ Back</button>
-    <button class="watch-btn" onclick="openDecoy()">Open Info</button>
-  </div>
+  /* HIDE THUMBNAIL */
+  document.getElementById("thumbBox").style.display = "none";
 
-</div>
+  /* SHOW VIDEO */
+  const video = document.getElementById("player");
+  video.style.display = "block";
+
+  /* FORCE LOAD + PLAY (FIX) */
+  video.load();
+  setTimeout(() => {
+    video.play().catch(() => {});
+  }, 100);
+};
+
+/* ===== DISABLE RIGHT CLICK ===== */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+/* ===== DISABLE COPY / CUT ===== */
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+
+/* ===== BASIC DEVTOOLS DETECTION (NON-BREAKING) ===== */
+setInterval(() => {
+  if (
+    window.outerWidth - window.innerWidth > 200 ||
+    window.outerHeight - window.innerHeight > 200
+  ) {
+    console.clear();
+  }
+}, 1000);
+    </script>
 
 <!-- JS -->
 <script>
