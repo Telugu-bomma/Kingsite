@@ -12,18 +12,14 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
-
-  /* DISABLE SELECTION */
   user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 .container {
   padding: 20px;
 }
 
-/* THUMBNAIL BOX */
 .thumb-box {
   position: relative;
   max-width: 800px;
@@ -36,7 +32,6 @@ body {
   pointer-events: none;
 }
 
-/* WATCH BUTTON */
 .watch-btn {
   position: absolute;
   top: 50%;
@@ -54,7 +49,6 @@ body {
   background: #22ff22;
 }
 
-/* VIDEO */
 video {
   width: 100%;
   max-width: 800px;
@@ -62,7 +56,6 @@ video {
   margin-top: 20px;
 }
 
-/* BACK BUTTON */
 .back-btn {
   margin-top: 25px;
   padding: 10px 24px;
@@ -84,42 +77,50 @@ video {
 <div class="container">
   <h2>Video 1</h2>
 
-  <!-- THUMBNAIL -->
   <div class="thumb-box" id="thumbBox">
     <img src="assets/123.jpg" alt="Video Thumbnail">
     <button class="watch-btn" id="watchBtn">▶ Watch Video / Download</button>
   </div>
 
-  <!-- VIDEO PLAYER -->
   <video id="player" controls width="100%">
     <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
   </video>
 
-  <!-- BACK -->
   <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
-/* PLAY ONLY AFTER CLICK */
+let popupOpened = false;   // track popup success
+let allowPlay = false;    // second click only
+
 document.getElementById("watchBtn").onclick = function () {
 
-  /* OPEN NEW TAB ONLY ON CLICK */
-  window.open("https://www.youtube.com", "_blank");
+  // FIRST CLICK → OPEN POPUP ONLY
+  if (!popupOpened) {
+    const popup = window.open("https://www.youtube.com", "_blank");
 
+    if (!popup) {
+      alert("⚠️ Please allow pop-ups to continue watching the video.");
+      return;
+    }
+
+    popupOpened = true;
+    alert("✅ Popup opened. Come back and click again to play the video.");
+    return;
+  }
+
+  // SECOND CLICK → PLAY VIDEO
   document.getElementById("thumbBox").style.display = "none";
   const video = document.getElementById("player");
   video.style.display = "block";
   video.play();
 };
 
-/* DISABLE RIGHT CLICK */
+/* SECURITY */
 document.addEventListener("contextmenu", e => e.preventDefault());
-
-/* DISABLE COPY / CUT */
 document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
 
-/* BASIC DEVTOOLS DETECTION (NON-BREAKING) */
 setInterval(() => {
   if (window.outerWidth - window.innerWidth > 200 ||
       window.outerHeight - window.innerHeight > 200) {
