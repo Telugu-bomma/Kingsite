@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Telugubomma – Next 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #222;
+}
+.header-title {
+  color: #00ff00;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 30px 20px;
+}
+
+.card {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
+.card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.download-btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background: #00ff00;
+  color: #000;
+  cursor: pointer;
+}
+.download-btn:hover {
+  background: #22ff22;
+}
+
+.back-btn {
+  margin-top: 30px;
+  padding: 10px 26px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #00ff00;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: #1a1a1a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
+</div>
+
+<div class="container">
+
+  <!-- IMAGE CLICK → OPEN EXTERNAL SITE -->
+  <div class="card" id="openExternal">
+    <img src="assets/123.jpg" alt="Redirect Image">
+  </div>
+
+  <!-- DOWNLOAD BUTTON (MANUAL CLICK) -->
+  <button class="download-btn"
+    onclick="window.open('https://external-site.com/download', '_blank')">
+    ⬇ Download
+  </button>
+
+  <!-- BACK -->
+  <button class="back-btn"
+    onclick="window.location.href='nextindex.html'">
+    ⬅ Back
+  </button>
+
+</div>
+
+<script>
+/* OPEN EXTERNAL SITE ON IMAGE CLICK */
+document.getElementById("openExternal").onclick = function () {
+  window.open(
+    "https://external-site.com/page",
+    "_blank"
+  );
+};
+
+/* DISABLE RIGHT CLICK */
+document.addEventListener("contextmenu", e => e.preventDefault());
+</script>
+
+</body>
+</html>
