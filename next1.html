@@ -87,7 +87,7 @@ body {
   <!-- IMAGE + BUTTON -->
   <div class="card" id="clickArea">
     <img src="assets/123.jpg" alt="Redirect Image">
-    <button class="download-btn">⬇ Download ⬇click download server 1</button>
+    <button class="download-btn">⬇ Download</button>
   </div>
 
   <!-- BACK -->
@@ -97,40 +97,43 @@ body {
 
 </div>
 
-<script>
-let step = 0;
+ <script>
+let popupOpened = false;   // Track popup success
+let allowDownload = false; // Allow second click
 
 document.getElementById("clickArea").onclick = function () {
 
-  if (step === 0) {
-    // STEP 0 → EXTERNAL SITE
+  // FIRST CLICK → OPEN POPUP ONLY
+  if (!popupOpened) {
     const popup = window.open(
-      "https://youtube.com",
+      "https://www.youtube.com",
       "_blank"
     );
 
     if (!popup) {
-      alert("Please allow popups to continue.");
+      alert("⚠️ Please allow pop-ups to continue.");
       return;
     }
 
-    step = 1;
-  } else {
-    // STEP 1 → DIRECT DOWNLOAD URL
+    popupOpened = true;
+    allowDownload = true;
+    alert("✅ Click again to start download.");
+    return;
+  }
+
+  // SECOND CLICK → DOWNLOAD LINK
+  if (allowDownload) {
     const popup = window.open(
       "https://download.moviespage.site/download/page/94335",
       "_blank"
     );
 
     if (!popup) {
-      alert("Please allow popups to start download.");
+      alert("⚠️ Please allow pop-ups to start download.");
     }
   }
 };
 
 /* DISABLE RIGHT CLICK */
 document.addEventListener("contextmenu", e => e.preventDefault());
-</script>
-
-</body>
-</html>
+</script> 
