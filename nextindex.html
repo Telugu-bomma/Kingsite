@@ -105,5 +105,15 @@ for (let i = 1; i <= 20; i++) {
   <button onclick="location.href='home.html'">⬅ Back to Home</button>
 </div>
 
+<!-- ADD HERE RIGHT CLICK DISABLE -->
+<script>
+document.addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+});
+document.addEventListener("selectstart", function(e) {
+  e.preventDefault();
+});
+</script>
+
 </body>
 </html>
