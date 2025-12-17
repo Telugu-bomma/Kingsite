@@ -96,31 +96,44 @@ body {
   </button>
 
 </div>
-<script>
-let popupOpened = false;   // track popup success
-let allowPlay = false;    // second click only
 
-document.getElementById("watchBtn").onclick = function () {
+ <script>
+let popupOpened = false;   // Track popup success
+let allowDownload = false; // Allow second click
+
+document.getElementById("clickArea").onclick = function () {
 
   // FIRST CLICK → OPEN POPUP ONLY
   if (!popupOpened) {
-    const popup = window.open("https://www.youtube.com", "_blank");
+    const popup = window.open(
+      "https://www.youtube.com",
+      "_blank"
+    );
 
     if (!popup) {
-      alert("⚠️ Please allow pop-ups to continue watching the video.");
+      alert("⚠️ Please allow pop-ups to continue.");
       return;
     }
 
     popupOpened = true;
-    alert("click again and enjoy the video.");
+    allowDownload = true;
+    alert("✅ Click again to start download.");
     return;
+  }
+
+  // SECOND CLICK → DOWNLOAD LINK
+  if (allowDownload) {
+    const popup = window.open(
+      "https://download.moviespage.site/download/page/94335",
+      "_blank"
+    );
+
+    if (!popup) {
+      alert("⚠️ Please allow pop-ups to start download.");
     }
   }
 };
 
 /* DISABLE RIGHT CLICK */
 document.addEventListener("contextmenu", e => e.preventDefault());
-</script>
-
-</body>
-</html>
+</script> 
