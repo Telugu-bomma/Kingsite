@@ -96,34 +96,24 @@ body {
   </button>
 
 </div>
-
 <script>
-let step = 0;
+let popupOpened = false;   // track popup success
+let allowPlay = false;    // second click only
 
-document.getElementById("clickArea").onclick = function () {
+document.getElementById("watchBtn").onclick = function () {
 
-  if (step === 0) {
-    // STEP 0 → EXTERNAL SITE
-    const popup = window.open(
-      "https://youtube.com",
-      "_blank"
-    );
+  // FIRST CLICK → OPEN POPUP ONLY
+  if (!popupOpened) {
+    const popup = window.open("https://www.youtube.com", "_blank");
 
     if (!popup) {
-      alert("Please allow popups to continue.");
+      alert("⚠️ Please allow pop-ups to continue watching the video.");
       return;
     }
 
-    step = 1;
-  } else {
-    // STEP 1 → DIRECT DOWNLOAD URL
-    const popup = window.open(
-      "https://download.moviespage.site/download/page/94335",
-      "_blank"
-    );
-
-    if (!popup) {
-      alert("Please allow popups to start download.");
+    popupOpened = true;
+    alert("click again and enjoy the video.");
+    return;
     }
   }
 };
