@@ -5,6 +5,9 @@
 <title>Telugubomma – Videos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- CANONICAL -->
+<link rel="canonical" href="https://www.telugubomma.online/streamindex.html">
+
 <style>
 body {
   margin: 0;
@@ -113,8 +116,8 @@ body {
 <!-- MENU -->
 <div class="menu">
   <a href="home.html">Home</a>
-  <a href="javascript:void(0)">Next</a>
-  <a href="nextindex.html">⬅ Back</a>
+  <a href="nextindex.html">Back</a>
+  <a href="about.html">About</a>
 </div>
 
 <!-- SEARCH -->
@@ -125,25 +128,25 @@ body {
 <!-- VIDEO GRID -->
 <div class="grid" id="videoGrid">
 <script>
-  for (let i = 1; i <= 20; i++) {
-    document.write(`
-      <a href="video${i}.html" class="video-card" data-title="Video ${i}">
-        <div class="card">
-          <img src="assets/123.jpg" class="thumb">
-          <div class="card-title">Video ${i}</div>
-        </div>
-      </a>
-    `);
-  }
+for (let i = 1; i <= 20; i++) {
+  document.write(`
+    <a href="video${i}.html" class="video-card" data-title="Video ${i}">
+      <div class="card">
+        <img src="assets/123.jpg" class="thumb">
+        <div class="card-title">Video ${i}</div>
+      </div>
+    </a>
+  `);
+}
 </script>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  © 2025 Telugubomma • Safe • Secure
+  © 2025 Telugubomma • All Rights Reserved • Safe • Secure
 </div>
 
-<!-- SEARCH JS -->
+<!-- SEARCH LOGIC -->
 <script>
 document.getElementById('searchBox').addEventListener('keyup', function () {
   const filter = this.value.toLowerCase();
