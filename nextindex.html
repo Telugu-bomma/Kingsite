@@ -13,6 +13,7 @@ body {
   color: #fff;
 }
 
+/* HEADER */
 .header {
   text-align: center;
   padding: 25px;
@@ -29,6 +30,7 @@ body {
   font-size: 16px;
 }
 
+/* GRID */
 .grid {
   padding: 20px;
   display: grid;
@@ -36,10 +38,9 @@ body {
   gap: 12px;
 }
 
+/* CARD */
 .card {
   position: relative;
-  max-width: 700px;
-  margin: auto;
   cursor: pointer;
 }
 
@@ -50,17 +51,14 @@ body {
 }
 
 .card:hover img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 /* OVERLAY */
 .play-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.45); /* 50% black */
+  inset: 0;
+  background: rgba(0,0,0,0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,7 +69,7 @@ body {
 .play-icon {
   width: 80px;
   height: 80px;
-  background: #1e90ff; /* blue */
+  background: #1e90ff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -86,15 +84,10 @@ body {
   height: 0;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
-  border-left: 22px solid #fff; /* white play icon */
-  }
-
-.card-title {
-  padding: 8px;
-  font-size: 14px;
-  color: #00ff00;
+  border-left: 22px solid #fff;
 }
 
+/* BACK */
 .back {
   text-align: center;
   margin: 30px 0;
@@ -129,8 +122,10 @@ for (let i = 1; i <= 20; i++) {
   document.write(`
     <a href="next${i}.html" style="text-decoration:none;">
       <div class="card">
-        <img src="assets/common/next${num}.png" class="thumb">
-        <div class="download-overlay">⬇ Download</div>
+        <img src="assets/common/next${num}.png" alt="Next ${i}">
+        <div class="play-overlay">
+          <div class="play-icon"></div>
+        </div>
       </div>
     </a>
   `);
@@ -142,14 +137,10 @@ for (let i = 1; i <= 20; i++) {
   <button onclick="location.href='home.html'">⬅ Back to Home</button>
 </div>
 
-<!-- ADD HERE RIGHT CLICK DISABLE -->
 <script>
-document.addEventListener("contextmenu", function(e) {
-  e.preventDefault();
-});
-document.addEventListener("selectstart", function(e) {
-  e.preventDefault();
-});
+/* DISABLE RIGHT CLICK & SELECTION */
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
 </script>
 
 </body>
