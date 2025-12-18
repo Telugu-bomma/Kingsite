@@ -2,120 +2,83 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next</title>
+<title>Telugubomma – Safe Place</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0d0d0d;
+  height: 100vh;
+  background: #000;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
 }
 
-/* HEADER */
-.header {
+/* MAIN BOX */
+.box {
   text-align: center;
-  padding: 25px;
-  border-bottom: 2px solid #1f1f1f;
-  background: rgba(0, 0, 0, 0.6);
-}
-.header-title {
-  color: #00ff00;
-  font-size: 30px;
-  font-weight: bold;
-}
-.header-sub {
-  color: #ccc;
-  font-size: 16px;
-}
-
-/* GRID */
-.grid {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.card {
-  position: relative;
-  cursor: pointer;
-}
-.card img {
-  width: 100%;
+  border: 1px solid #222;
+  padding: 40px 25px;
+  max-width: 360px;
+  background: #0d0d0d;
   border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-.card:hover img {
-  transform: scale(1.04);
 }
 
-/* BACK / NEXT */
-.nav {
-  text-align: center;
-  margin: 30px 0;
-}
-.nav button {
-  padding: 10px 26px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #111;
+h1 {
   color: #00ff00;
-  cursor: pointer;
-  margin: 0 8px;
-}
-.nav button:hover {
-  background: #1a1a1a;
+  margin-bottom: 15px;
 }
 
-/* FOOTER (ONLY ADDED) */
+p {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #00ff00;
+  color: #000;
+  cursor: pointer;
+}
+button:hover {
+  background: #22ff22;
+}
+
+/* FOOTER – PERFECT BOTTOM CENTER */
 .footer {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
   text-align: center;
-  padding: 18px;
-  border-top: 1px solid #222;
   color: #aaa;
-  font-size: 14px;
+  font-size: 13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <div class="header-title">TELUGUBOMMA</div>
-  <div class="header-sub">Enjoy your day 😊</div>
-</div>
+  <div class="box">
+    <h1>Telugubomma.online</h1>
+    <p>
+      We do not support Piracy.<br>
+      Please watch movies in theatres and share our website to support us 😎
+    </p>
+    <button onclick="location.href='home.html'">Enter</button>
+  </div>
 
-<div class="grid">
-<script>
-for (let i = 1; i <= 20; i++) {
-  const num = i < 10 ? '0' + i : i;
-  document.write(`
-    <a href="next${i}.html" style="text-decoration:none;">
-      <div class="card">
-        <img src="assets/common/next${num}.png">
-      </div>
-    </a>
-  `);
-}
-</script>
-</div>
-
-<div class="nav">
-  <button onclick="location.href='home.html'">⬅ Back</button>
-  <button onclick="location.href='streamindex.html'">Next ➡</button>
-</div>
-
-<div class="footer">
-  © 2025 Telugubomma • All Rights Reserved • Safe • Secure
-</div>
-
-<script>
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("selectstart", e => e.preventDefault());
-</script>
+  <div class="footer">
+    © 2025 Telugubomma • All Rights Reserved • Safe • Secure
+  </div>
 
 </body>
 </html>
