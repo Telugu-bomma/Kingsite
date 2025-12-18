@@ -1,33 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Telugubomma – Videos</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8">
-  <title>Telugubomma</title>
+  <title>Telugubomma – Maintenance</title>
 
-  <!-- ✅ CANONICAL (correct place) -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://www.telugubomma.online/">
 
-  <!-- ✅ MAINTENANCE SWITCH -->
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      color: #00ff00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .box {
+      max-width: 420px;
+      padding: 30px;
+      border: 1px solid #222;
+      border-radius: 12px;
+      background: #0d0d0d;
+    }
+    p {
+      color: #ccc;
+      font-size: 15px;
+    }
+  </style>
+
   <script>
     const MAINTENANCE = fales; // 🔁 true = maintenance | false = live
 
     if (!MAINTENANCE) {
-      window.location.href = "stream-live.html"; // real video page
+      window.location.replace("stream-live.html");
     }
   </script>
 </head>
 
 <body>
-  <!-- Maintenance message -->
-  <h2 style="color:#00ff00;text-align:center;margin-top:40vh;">
-    Uploading process… Please come back later 😊
-  </h2>
+  <div class="box">
+    <h2>Uploading in progress…</h2>
+    <p>Please come back after some time 😊</p>
+  </div>
 </body>
 </html>
   
