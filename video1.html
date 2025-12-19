@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kaantha</title>
+<title>Telugubomma – Next 1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -12,27 +12,37 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #222;
+}
+.header-title {
+  color: #00ff00;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .container {
-  padding: 20px;
+  padding: 30px 20px;
 }
 
-.thumb-box {
-  position: relative;
-  max-width: 800px;
+/* IMAGE CARD */
+.card {
+  max-width: 700px;
   margin: 0 auto;
+  position: relative;
+  cursor: pointer;
 }
-
-.thumb-box img {
+.card img {
   width: 100%;
   border-radius: 12px;
   pointer-events: none;
 }
 
-.watch-btn {
+/* SUPER BUTTON */
+.download-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -45,20 +55,14 @@ body {
   color: #000;
   cursor: pointer;
 }
-.watch-btn:hover {
+.download-btn:hover {
   background: #22ff22;
 }
 
-video {
-  width: 100%;
-  max-width: 800px;
-  display: none;
-  margin-top: 20px;
-}
-
+/* BACK BUTTON */
 .back-btn {
-  margin-top: 25px;
-  padding: 10px 24px;
+  margin-top: 30px;
+  padding: 10px 26px;
   font-size: 15px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -74,60 +78,62 @@ video {
 
 <body>
 
-<div class="container">
-  <h2>Video 1</h2>
-
-  <div class="thumb-box" id="thumbBox">
-    <img src="assets/123.jpg" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch Video / Download</button>
-  </div>
-
-  <video id="player" controls width="100%">
-    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
-  </video>
-
-  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
 </div>
 
-<script>
-let popupOpened = false;   // track popup success
-let allowPlay = false;    // second click only
+<div class="container">
 
-document.getElementById("watchBtn").onclick = function () {
+  <!-- IMAGE + BUTTON -->
+  <div class="card" id="clickArea">
+    <img src="assets/video01" alt="Redirect Image">
+    <button class="download-btn">⬇ Download</button>
+  </div>
+
+  <!-- BACK -->
+  <button class="back-btn" onclick="location.href='nextindex.html'">
+    ⬅ Back
+  </button>
+
+</div>
+
+ <script>
+let popupOpened = false;   // Track popup success
+let allowDownload = false; // Allow second click
+
+document.getElementById("clickArea").onclick = function () {
 
   // FIRST CLICK → OPEN POPUP ONLY
   if (!popupOpened) {
-    const popup = window.open("https://www.youtube.com", "_blank");
+    const popup = window.open(
+      "https://www.youtube.com",
+      "_blank"
+    );
 
     if (!popup) {
-      alert("⚠️ Please allow pop-ups to continue watching the video.");
+      alert("⚠️ Please allow pop-ups to continue.");
       return;
     }
 
     popupOpened = true;
-    alert("click again and enjoy the video.");
+    allowDownload = true;
+    alert("✅ Click again to start download.");
     return;
   }
 
-  // SECOND CLICK → PLAY VIDEO
-  document.getElementById("thumbBox").style.display = "none";
-  const video = document.getElementById("player");
-  video.style.display = "block";
-  video.play();
+  // SECOND CLICK → DOWNLOAD LINK
+  if (allowDownload) {
+    const popup = window.open(
+      "https://tellybiz.in/?f=157wbtn",
+      "_blank"
+    );
+
+    if (!popup) {
+      alert("⚠️ Please allow pop-ups to start download.");
+    }
+  }
 };
 
-/* SECURITY */
+/* DISABLE RIGHT CLICK */
 document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("copy", e => e.preventDefault());
-document.addEventListener("cut", e => e.preventDefault());
-
-setInterval(() => {
-  if (window.outerWidth - window.innerWidth > 200 ||
-      window.outerHeight - window.innerHeight > 200) {
-    console.clear();
-  }
-}, 1000);
-</script>
-
-</body>
-</html>
+</script> 
