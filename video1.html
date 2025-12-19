@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next 1</title>
+<title>Telugubomma – Video</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CANONICAL -->
+<link rel="canonical" href="https://www.telugubomma.online/video1.html">
 
 <style>
 body {
@@ -12,37 +15,31 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
-}
 
-.header {
-  padding: 20px;
-  border-bottom: 1px solid #222;
-}
-.header-title {
-  color: #00ff00;
-  font-size: 28px;
-  font-weight: bold;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .container {
-  padding: 30px 20px;
+  padding: 20px;
 }
 
-/* IMAGE CARD */
-.card {
-  max-width: 700px;
-  margin: 0 auto;
+/* THUMBNAIL */
+.thumb-box {
   position: relative;
-  cursor: pointer;
+  max-width: 800px;
+  margin: 0 auto;
 }
-.card img {
+
+.thumb-box img {
   width: 100%;
   border-radius: 12px;
   pointer-events: none;
 }
 
-/* SUPER BUTTON */
-.download-btn {
+/* WATCH BUTTON */
+.watch-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -55,14 +52,22 @@ body {
   color: #000;
   cursor: pointer;
 }
-.download-btn:hover {
+.watch-btn:hover {
   background: #22ff22;
 }
 
-/* BACK BUTTON */
+/* VIDEO */
+video {
+  width: 100%;
+  max-width: 800px;
+  display: none;
+  margin-top: 20px;
+}
+
+/* BACK */
 .back-btn {
-  margin-top: 30px;
-  padding: 10px 26px;
+  margin-top: 25px;
+  padding: 10px 24px;
   font-size: 15px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -78,62 +83,83 @@ body {
 
 <body>
 
-<div class="header">
-  <div class="header-title">TELUGUBOMMA</div>
-</div>
-
 <div class="container">
+  <h2>Video</h2>
 
-  <!-- IMAGE + BUTTON -->
-  <div class="card" id="clickArea">
-    <img src="assets/video01" alt="Redirect Image">
-    <button class="download-btn">⬇ Download</button>
+  <!-- THUMB -->
+  <div class="thumb-box" id="thumbBox">
+    <img id="thumbImage" src="" alt="Video Thumbnail">
+    <button class="watch-btn" id="watchBtn">▶ Watch / Download</button>
   </div>
 
-  <!-- BACK -->
-  <button class="back-btn" onclick="location.href='nextindex.html'">
-    ⬅ Back
-  </button>
+  <!-- PLAYER -->
+  <video id="player" controls preload="metadata">
+    <source id="videoSource" src="" type="video/mp4">
+  </video>
 
+  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
- <script>
-let popupOpened = false;   // Track popup success
-let allowDownload = false; // Allow second click
+<script>
+/* ===============================
+   AUTO FILE DETECTION
+================================ */
+const page = location.pathname.split("/").pop();
+const match = page.match(/video(\d+)\.html/);
 
-document.getElementById("clickArea").onclick = function () {
+if (match) {
+  const n = match[1];
 
-  // FIRST CLICK → OPEN POPUP ONLY
-  if (!popupOpened) {
-    const popup = window.open(
-      "https://www.youtube.com",
-      "_blank"
-    );
+  // Thumbnail
+  document.getElementById("thumbImage").src =
+    `assets/video${n}.jpg`;
+
+  // Video (Worker URL)
+  document.getElementById("videoSource").src =
+    `https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/${n}.mp4`;
+}
+
+/* ===============================
+   CLICK LOGIC (SECURE)
+================================ */
+let opened = false;
+
+document.getElementById("watchBtn").onclick = () => {
+  if (!opened) {
+    const popup = window.open("https://www.youtube.com", "_blank");
 
     if (!popup) {
-      alert("⚠️ Please allow pop-ups to continue.");
+      alert("⚠ Please allow popups to continue");
       return;
     }
 
-    popupOpened = true;
-    allowDownload = true;
-    alert("✅ Click again to start download.");
+    opened = true;
     return;
   }
 
-  // SECOND CLICK → DOWNLOAD LINK
-  if (allowDownload) {
-    const popup = window.open(
-      "https://tellybiz.in/?f=157wbtn",
-      "_blank"
-    );
-
-    if (!popup) {
-      alert("⚠️ Please allow pop-ups to start download.");
-    }
-  }
+  document.getElementById("thumbBox").style.display = "none";
+  const v = document.getElementById("player");
+  v.style.display = "block";
+  v.play();
 };
 
-/* DISABLE RIGHT CLICK */
+/* ===============================
+   BASIC HARDENING
+================================ */
 document.addEventListener("contextmenu", e => e.preventDefault());
-</script> 
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+
+setInterval(() => {
+  if (
+    window.outerWidth - window.innerWidth > 200 ||
+    window.outerHeight - window.innerHeight > 200
+  ) {
+    console.clear();
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
