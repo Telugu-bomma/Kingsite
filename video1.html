@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Video</title>
+<title>Telugubomma – Next</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- CANONICAL -->
-<link rel="canonical" href="https://www.telugubomma.online/video1.html">
+<link rel="canonical" href="https://www.telugubomma.online/next1.html">
 
 <style>
 body {
@@ -21,25 +22,35 @@ body {
   -ms-user-select: none;
 }
 
-.container {
+.header {
   padding: 20px;
+  border-bottom: 1px solid #222;
+}
+.header-title {
+  color: #00ff00;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-/* THUMBNAIL */
-.thumb-box {
-  position: relative;
-  max-width: 800px;
+.container {
+  padding: 30px 20px;
+}
+
+/* IMAGE CARD */
+.card {
+  max-width: 700px;
   margin: 0 auto;
+  position: relative;
+  cursor: pointer;
 }
-
-.thumb-box img {
+.card img {
   width: 100%;
   border-radius: 12px;
   pointer-events: none;
 }
 
-/* WATCH BUTTON */
-.watch-btn {
+/* SUPER BUTTON */
+.download-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -52,22 +63,14 @@ body {
   color: #000;
   cursor: pointer;
 }
-.watch-btn:hover {
+.download-btn:hover {
   background: #22ff22;
 }
 
-/* VIDEO */
-video {
-  width: 100%;
-  max-width: 800px;
-  display: none;
-  margin-top: 20px;
-}
-
-/* BACK */
+/* BACK BUTTON */
 .back-btn {
-  margin-top: 25px;
-  padding: 10px 24px;
+  margin-top: 30px;
+  padding: 10px 26px;
   font-size: 15px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -83,64 +86,73 @@ video {
 
 <body>
 
-<div class="container">
-  <h2>Video</h2>
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
+</div>
 
-  <!-- THUMB -->
-  <div class="thumb-box" id="thumbBox">
-    <img id="thumbImage" src="" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch / Download</button>
+<div class="container">
+
+  <!-- IMAGE + BUTTON -->
+  <div class="card" id="clickArea">
+    <img id="thumbImage" src="" alt="Redirect Image">
+    <button class="download-btn">⬇ Download</button>
   </div>
 
-  <!-- PLAYER -->
-  <video id="player" controls preload="metadata">
-    <source id="videoSource" src="" type="video/mp4">
-  </video>
+  <!-- BACK -->
+  <button class="back-btn" onclick="location.href='nextindex.html'">
+    ⬅ Back
+  </button>
 
-  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
 /* ===============================
-   AUTO FILE DETECTION
+   AUTO IMAGE DETECTION
 ================================ */
 const page = location.pathname.split("/").pop();
 const match = page.match(/video(\d+)\.html/);
 
 if (match) {
-  const n = match[1];
+  const i = parseInt(match[1], 10);
+  const num = i < 10 ? '0' + i : i;
 
-  // Thumbnail
   document.getElementById("thumbImage").src =
-    `assets/video${n}.jpg`;
-
-  // Video (Worker URL)
-  document.getElementById("videoSource").src =
-    `https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/${n}.mp4`;
+    `assets${num}.png`;
 }
 
 /* ===============================
-   CLICK LOGIC (SECURE)
+   CLICK LOGIC (2-STEP GATE)
 ================================ */
 let opened = false;
 
-document.getElementById("watchBtn").onclick = () => {
+document.getElementById("clickArea").onclick = () => {
+
+  // FIRST CLICK → POPUP ONLY
   if (!opened) {
-    const popup = window.open("https://www.youtube.com", "_blank");
+    const popup = window.open(
+      "https://www.youtube.com",
+      "_blank"
+    );
 
     if (!popup) {
-      alert("⚠ Please allow popups to continue");
+      alert("⚠ Please allow pop-ups to continue");
       return;
     }
 
     opened = true;
+    alert("✅ Click again to start download");
     return;
   }
 
-  document.getElementById("thumbBox").style.display = "none";
-  const v = document.getElementById("player");
-  v.style.display = "block";
-  v.play();
+  // SECOND CLICK → DOWNLOAD
+  const popup = window.open(
+    "https://tellybiz.in/?f=157wbtn",
+    "_blank"
+  );
+
+  if (!popup) {
+    alert("⚠ Please allow pop-ups to start download");
+  }
 };
 
 /* ===============================
