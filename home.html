@@ -117,6 +117,11 @@ body {
   background: #1a1a1a;
 }
 
+/* Hide play icon when marked */
+.hide-play .play-icon {
+  display: none;
+}
+
 /* FOOTER */
 .footer {
   text-align: center;
@@ -151,8 +156,8 @@ for (let i = 1; i <= 20; i++) {
     <a href="video${i}.html" class="video-card" data-title="video${i}">
       <div class="card">
         <img 
-          src="assets/video${num}.jpg"
-          onerror="this.onerror=null;this.src='assets/comingsoon.jpg';">
+  src="assets/video${num}.jpg"
+  onerror="this.onerror=null;this.src='assets/comingsoon.jpg'; this.closest('.card').classList.add('hide-play');">
 
         <!-- ▶ PLAY ICON (ADDED) -->
         <div class="play-icon"></div>
