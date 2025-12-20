@@ -1,4 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /control-panel
+Disallow: /admin-backup
 
 Sitemap: https://www.telugubomma.online/sitemap.xml
