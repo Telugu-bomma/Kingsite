@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hairpull</title>
+<title>Telugubomma – Video</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="https://www.telugubomma.online/video1.html">
 
 <style>
 body {
@@ -13,26 +15,36 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   user-select: none;
-  -webkit-user-select: none;
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #222;
+}
+.header-title {
+  color: #00ff00;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .container {
-  padding: 20px;
+  padding: 30px 20px;
 }
 
-.thumb-box {
-  position: relative;
-  max-width: 800px;
+/* IMAGE CARD */
+.card {
+  max-width: 700px;
   margin: 0 auto;
+  position: relative;
 }
-
-.thumb-box img {
+.card img {
   width: 100%;
   border-radius: 12px;
   pointer-events: none;
 }
 
-.watch-btn {
+/* DOWNLOAD BUTTON */
+.download-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -41,24 +53,34 @@ body {
   font-size: 18px;
   border: none;
   border-radius: 10px;
-  background: rgba(0, 255, 0, 0.9);
+  background: rgba(0,255,0,0.9);
   color: #000;
   cursor: pointer;
 }
-.watch-btn:hover {
-  background: #22ff22;
-}
 
-video {
-  width: 100%;
-  max-width: 800px;
+/* QUALITY BUTTONS */
+.quality-box {
   display: none;
   margin-top: 20px;
 }
+.quality-box button {
+  margin: 8px;
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #00ff00;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+.quality-box button:hover {
+  background: #1a1a1a;
+}
 
 .back-btn {
-  margin-top: 25px;
-  padding: 10px 24px;
+  margin-top: 30px;
+  padding: 10px 26px;
   font-size: 15px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -66,67 +88,94 @@ video {
   color: #00ff00;
   cursor: pointer;
 }
-.back-btn:hover {
-  background: #1a1a1a;
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Video 1</h2>
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
+</div>
 
-  <div class="thumb-box" id="thumbBox">
-    <img src="assets/123.jpg" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch Video / Download</button>
+<div class="container">
+
+  <div class="card" id="clickArea">
+    <img id="thumbImage" src="" alt="Video Thumbnail">
+    <button class="download-btn" id="mainBtn">⬇ Download</button>
   </div>
 
-  <video id="player" controls width="100%">
-    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
-  </video>
+  <!-- QUALITY OPTIONS -->
+  <div class="quality-box" id="qualityBox">
+    <button onclick="openVideo('low')">Low</button>
+    <button onclick="openVideo('medium')">Medium</button>
+    <button onclick="openVideo('hd')">HD</button>
+  </div>
 
   <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
-let popupOpened = false;   // track popup success
-let allowPlay = false;    // second click only
+/* ===============================
+   AUTO IMAGE DETECTION
+================================ */
+const page = location.pathname.split("/").pop();
+const match = page.match(/video(\d+)\.html/);
+let videoNum = "01";
 
-document.getElementById("watchBtn").onclick = function () {
+if (match) {
+  videoNum = match[1].padStart(2, "0");
+  document.getElementById("thumbImage").src = `assets/video${videoNum}.jpg`;
+}
 
-  // FIRST CLICK → OPEN POPUP ONLY
-  if (!popupOpened) {
-    const popup = window.open("https://www.youtube.com", "_blank");
-
-    if (!popup) {
-      alert("⚠️ Please allow pop-ups to continue watching the video.");
-      return;
-    }
-
-    popupOpened = true;
-    alert("click again and enjoy the video.");
-    return;
-  }
-
-  // SECOND CLICK → PLAY VIDEO
-  document.getElementById("thumbBox").style.display = "none";
-  const video = document.getElementById("player");
-  video.style.display = "block";
-  video.play();
+/* ===============================
+   VIDEO URL MAP
+================================ */
+const VIDEO_URLS = {
+  hd:     "https://tellybiz.in/?f=dp2cz2",
+  medium: "https://tellybiz.in/?f=1prf1yj",
+  low:    "https://tellybiz.in/?f=1h8ylhr"
 };
 
-/* SECURITY */
+/* ===============================
+   CLICK GATE
+================================ */
+let unlocked = false;
+
+document.getElementById("clickArea").onclick = () => {
+  if (!unlocked) {
+    const popup = window.open("https://www.youtube.com", "_blank");
+    if (!popup) {
+      alert("⚠ Please allow pop-ups");
+      return;
+    }
+    unlocked = true;
+    document.getElementById("mainBtn").style.display = "none";
+    document.getElementById("qualityBox").style.display = "block";
+  }
+};
+
+/* ===============================
+   FALLBACK LOGIC
+================================ */
+function openVideo(level) {
+  if (VIDEO_URLS[level]) {
+    window.open(VIDEO_URLS[level], "_blank");
+  } else if (level === "low" && VIDEO_URLS.medium) {
+    window.open(VIDEO_URLS.medium, "_blank");
+  } else if (VIDEO_URLS.hd) {
+    window.open(VIDEO_URLS.hd, "_blank");
+  } else {
+    alert("Video not available");
+  }
+}
+
+/* ===============================
+   HARDENING
+================================ */
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
-
-setInterval(() => {
-  if (window.outerWidth - window.innerWidth > 200 ||
-      window.outerHeight - window.innerHeight > 200) {
-    console.clear();
-  }
-}, 1000);
+document.addEventListener("selectstart", e => e.preventDefault());
 </script>
 
 </body>
